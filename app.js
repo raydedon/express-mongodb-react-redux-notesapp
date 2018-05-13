@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var notesRouter = require('./routes/note.routes');
 
 var app = express();
 
@@ -19,8 +20,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Configuring the database
+const dbConfig = require('./config/database.config.js');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+// Connecting to the database
+mongoose.connect(dbConfig.url)
+	.then(() => {
+		console.log("Successfully connected to the database");
+	})
+	.catch(err => {
+		console.log('Could not connect to the database. Exiting now...');
+		process.exit();
+	});
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/notes', notesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
