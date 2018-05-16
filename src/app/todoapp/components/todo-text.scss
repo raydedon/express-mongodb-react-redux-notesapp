@@ -1,0 +1,31 @@
+.todo-text-display .readonly-todo {
+    display: block;
+}
+
+.todo-text-edit {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+}
+
+.todo-text-display .readonly-todo:hover .todo-text-edit {
+    display: inline-block;
+}
+
+.todo-text-save {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.todo-text-display .edit-todo {
+    display: none;
+}
+
+.todo-text-display.edit-active .readonly-todo {
+    display: none;
+}
+
+.todo-text-display.edit-active .edit-todo {
+    display: block;
+}
