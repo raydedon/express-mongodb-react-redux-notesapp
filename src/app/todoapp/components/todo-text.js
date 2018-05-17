@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './todo-text.scss'
-
+import './todo-text.scss';
 
 class TodoText extends Component {
 	constructor(props) {
@@ -10,6 +9,7 @@ class TodoText extends Component {
 		this.saveTodo = this.saveTodo.bind(this);
 		this.onEditTodoTextChange = this.onEditTodoTextChange.bind(this);
 		this.markCompleted = this.markCompleted.bind(this);
+		this.cancelEditTodo = this.cancelEditTodo.bind(this);
 	}
 	
 	editTodo(e) {
@@ -17,13 +17,19 @@ class TodoText extends Component {
 		let {id, text, onEditTodoText} = this.props;
 		onEditTodoText(id, text);
 	}
-	
+
 	saveTodo(e) {
 		e.stopPropagation();
 		let {id, editTodoText, onSaveTodoText} = this.props;
 		onSaveTodoText(id, editTodoText);
 	}
-	
+
+	cancelEditTodo(e) {
+		e.stopPropagation();
+		let {onCancelEditTodoText} = this.props;
+		onCancelEditTodoText();
+	}
+
 	onEditTodoTextChange(e) {
 		let {onEditTodoTextChange} = this.props;
 		onEditTodoTextChange(e.currentTarget.value);
@@ -41,11 +47,12 @@ class TodoText extends Component {
 				<div className="readonly-todo"
 					 onClick={this.markCompleted}>
 					<span className={'todo-text'}>{text}</span>
-					<a onClick={this.editTodo} className="todo-text-edit"><i className="fas fa-pencil-alt"></i></a>
+					<a onClick={this.editTodo} className="todo-text-edit"><i className="fa fa-pencil"></i></a>
 				</div>
 				<div className="edit-todo">
 					<input type="text" value={editTodoText} onChange={this.onEditTodoTextChange} className={'todo-input input-sm'}/>
-					<a onClick={this.saveTodo} className="todo-text-save"><i className="fas fa-check"></i></a>
+					<a onClick={this.saveTodo} className="todo-text-save"><i className="fa fa-check"></i></a>
+					<a onClick={this.cancelEditTodo} className="todo-text-save"><i className="fa fa-times"></i></a>
 				</div>
 			</div>
 		)

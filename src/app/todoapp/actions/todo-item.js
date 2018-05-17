@@ -1,5 +1,6 @@
 export const EDIT_TODO_INPUT_TEXT_CHANGE = 'EDIT_TODO_INPUT_TEXT_CHANGE';
 export const EDIT_TODO_TEXT = 'EDIT_TODO_TEXT';
+export const CANCEL_EDIT_TODO_TEXT = 'CANCEL_EDIT_TODO_TEXT';
 export const SAVE_TODO_TEXT = 'SAVE_TODO_TEXT';
 
 export const onEditTodoTextChange = text => ({
@@ -11,6 +12,10 @@ export const onEditTodoText = (id, text) => ({
 	type: EDIT_TODO_TEXT,
 	id,
 	text
+});
+
+export const onCancelEditTodoText = (id) => ({
+	type: CANCEL_EDIT_TODO_TEXT
 });
 
 export const onSaveTodoText = (id, text) => ({
