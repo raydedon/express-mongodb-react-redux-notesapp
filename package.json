@@ -8,16 +8,19 @@
     "build": "webpack --mode=production"
   },
   "dependencies": {
+    "bootstrap": "^4.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "font-awesome": "^4.7.0",
     "http-errors": "~1.6.2",
-    "mongoose": "^5.1.0",
-    "morgan": "~1.9.0"
+    "mongoose": "^5.1.1",
+    "morgan": "~1.9.0",
+    "reactstrap": "^6.0.1"
   },
   "devDependencies": {
+    "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.4.3",
@@ -40,6 +43,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
+    "precss": "^3.1.2",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

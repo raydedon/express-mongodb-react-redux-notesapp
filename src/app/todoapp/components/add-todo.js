@@ -25,8 +25,20 @@ class AddTodo extends Component {
 		let { addTodoText } = this.props;
 		return (
 			<form>
-				<input type="text" onChange={this.onAddTodoTextChange} value={addTodoText} placeholder="type..."/>
-				<button type="button" onClick={this.createAddTodoItem}>+</button>
+				<div className="input-group mb-3">
+					<input type="text"
+					       className="form-control"
+					       placeholder="Add Todo..."
+					       onChange={this.onAddTodoTextChange}
+					       value={addTodoText}/>
+					<div class="input-group-append">
+						<button className="btn btn-outline-secondary"
+						        type="button"
+						        onClick={this.createAddTodoItem}>
+							<i className="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
 			</form>
 		);
 	}
