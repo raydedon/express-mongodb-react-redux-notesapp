@@ -31,7 +31,7 @@ class AddTodo extends Component {
 					       placeholder="Add Todo..."
 					       onChange={this.onAddTodoTextChange}
 					       value={addTodoText}/>
-					<div class="input-group-append">
+					<div className="input-group-append">
 						<button className="btn btn-outline-secondary"
 						        type="button"
 						        onClick={this.createAddTodoItem}>
