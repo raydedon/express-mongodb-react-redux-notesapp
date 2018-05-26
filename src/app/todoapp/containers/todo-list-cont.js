@@ -1,16 +1,21 @@
 import {connect} from 'react-redux';
-import {markCompleted} from '../actions';
+import {markCompleted, VisibilityFilters} from '../actions';
 import TodoList from '../components/todo-list';
 
-const getVisibleTodos = (list, filter) => {
+const getVisibleTodos = (list, filter = VisibilityFilters.SHOW_ALL) => {
 	switch(filter) {
-		case 'SHOW_COMPLETED':
+		case VisibilityFilters.SHOW_COMPLETED: {
 			return list.filter(t => t.completed);
-		case 'SHOW_ACTIVE':
+		}
+		case VisibilityFilters.SHOW_ACTIVE: {
 			return list.filter(t => !t.completed);
-		case 'SHOW_ALL':
-		default:
+		}
+		case VisibilityFilters.SHOW_ALL: {
 			return list;
+		}
+		default: {
+			return list;
+		}
 	}
 };
 

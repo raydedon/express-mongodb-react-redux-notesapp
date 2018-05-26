@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
 	onEditTodoTextChange: text => dispatch(onEditTodoTextChange(text)),
 	onEditTodoText: (id, text) => dispatch(onEditTodoText(id, text)),
-	onCancelEditTodoText: (id, text) => dispatch(onCancelEditTodoText()),
+	onCancelEditTodoText: () => dispatch(onCancelEditTodoText()),
 	onSaveTodoText: (id, text) => dispatch(onSaveTodoText(id, text))
 });
 

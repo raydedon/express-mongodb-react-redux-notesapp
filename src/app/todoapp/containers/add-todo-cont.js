@@ -7,8 +7,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	createAddTodoItem: text => dispatch(createTodo(text, incCounter())),
-	onAddTodoTextChange: text => dispatch(onAddTodoTextChange(text))
+	createAddTodoItem: text => {
+		dispatch(createTodo(text, incCounter()));
+	},
+
+	onAddTodoTextChange: text => {
+		dispatch(onAddTodoTextChange(text));
+	}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);

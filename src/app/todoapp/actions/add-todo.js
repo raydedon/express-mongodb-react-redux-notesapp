@@ -6,6 +6,11 @@ export function incCounter() {
 	return ++counter;
 }
 
+/*
+export function createTodo(text, todoId) {
+	const request = fetch(''{});
+}
+*/
 export const createTodo = (text, todoId) => ({
 	type: ADD_TODO,
 	id: todoId,

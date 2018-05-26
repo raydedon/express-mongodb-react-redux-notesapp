@@ -46,16 +46,22 @@ class TodoText extends Component {
 			<div className={`todo-text-display ${editActive ? 'edit-active' : ''}`}>
 				<div className="readonly-todo"
 					 onClick={this.markCompleted}>
-					<span className="todo-text">{text}</span>
-					<a onClick={this.editTodo} className="todo-text-edit"><i className="fa fa-pencil"></i></a>
+					<span className="todo-text h5">{text}</span>
+					<a onClick={this.editTodo} className="todo-text-edit">
+						<i className="fa fa-2x fa-pencil" />
+					</a>
 				</div>
 				<div className="edit-todo">
 					<input type="text"
 					       value={editTodoText}
 					       onChange={this.onEditTodoTextChange}
 					       className="todo-input form-control" />
-					<a onClick={this.saveTodo} className="todo-text-save"><i className="fa fa-check"></i></a>
-					<a onClick={this.cancelEditTodo} className="todo-text-save"><i className="fa fa-times"></i></a>
+					<a onClick={this.saveTodo} className="todo-text-save">
+						<i className="fa fa-2x fa-check" />
+					</a>
+					<a onClick={this.cancelEditTodo} className="todo-text-save">
+						<i className="fa fa-2x fa-times" />
+					</a>
 				</div>
 			</div>
 		);
