@@ -1,12 +1,12 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const pathsToClean = ['public', 'views'];
 const cleanOptions = {
-	root:     path.resolve(__dirname),
-	verbose:  true,
-	dry:      false
+	root: path.resolve(__dirname),
+	verbose: true,
+	dry: false
 };
 
 
@@ -39,7 +39,7 @@ module.exports = {
 					{
 						loader: 'postcss-loader', // Run post css actions
 						options: {
-							plugins: function () { // post css plugins, can be exported to postcss.config.js
+							plugins: function() { // post css plugins, can be exported to postcss.config.js
 								return [
 									require('precss'),
 									require('autoprefixer')
@@ -70,8 +70,8 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
-			filename: "[name].css",
-			chunkFilename: "[id].css"
+			filename: '[name].css',
+			chunkFilename: '[id].css'
 		}),
 		new HtmlWebpackPlugin({
 			title: 'React redux app',
@@ -81,4 +81,4 @@ module.exports = {
 			favicon: '../src/images/favicon.ico'
 		})
 	]
-}
+};

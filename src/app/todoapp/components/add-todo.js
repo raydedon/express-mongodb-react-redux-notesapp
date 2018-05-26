@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import isEmpty from "lodash/isEmpty";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 
 class AddTodo extends Component {
 	constructor(props) {
@@ -10,19 +10,19 @@ class AddTodo extends Component {
 	}
 
 	onAddTodoTextChange(e) {
-		let { onAddTodoTextChange } = this.props;
+		let {onAddTodoTextChange} = this.props;
 		onAddTodoTextChange(e.currentTarget.value);
 	}
 
 	createAddTodoItem(e) {
-		let { createAddTodoItem, addTodoText, onAddTodoTextChange } = this.props;
+		let {createAddTodoItem, addTodoText, onAddTodoTextChange} = this.props;
 		if(isEmpty(addTodoText)) return;
 		createAddTodoItem(addTodoText);
 		onAddTodoTextChange('');
 	}
 
 	render() {
-		let { addTodoText } = this.props;
+		let {addTodoText} = this.props;
 		return (
 			<form>
 				<div className="input-group mb-3">
@@ -30,7 +30,7 @@ class AddTodo extends Component {
 					       className="form-control"
 					       placeholder="Add Todo..."
 					       onChange={this.onAddTodoTextChange}
-					       value={addTodoText}/>
+					       value={addTodoText} />
 					<div className="input-group-append">
 						<button className="btn btn-outline-secondary"
 						        type="button"

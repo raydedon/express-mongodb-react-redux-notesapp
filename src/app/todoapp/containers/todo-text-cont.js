@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import TodoText from '../components/todo-text'
-import {onEditTodoText, onCancelEditTodoText, onEditTodoTextChange, onSaveTodoText} from "../actions/todo-item";
+import {connect} from 'react-redux';
+import TodoText from '../components/todo-text';
+import {onEditTodoText, onCancelEditTodoText, onEditTodoTextChange, onSaveTodoText} from '../actions/todo-item';
 
 const mapStateToProps = (state, ownProps) => ({
 	id: ownProps.id,
 	editTodoText: state.editTodoObj.text ? state.editTodoObj.text : '',
 	text: ownProps.text,
-	editActive: state.editTodoObj && state.editTodoObj.id  && state.editTodoObj.id === ownProps.id ? true : false,
+	editActive: !!(state.editTodoObj && state.editTodoObj.id  && state.editTodoObj.id === ownProps.id),
 	markCompleted: ownProps.markCompleted
 });
 

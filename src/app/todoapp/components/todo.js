@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './todo.scss'
-import TodoTextCont from "../containers/todo-text-cont";
+import './todo.scss';
+import TodoTextCont from '../containers/todo-text-cont';
 
 class Todo extends Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.markCompleted = this.markCompleted.bind(this);
 	}
-	
+
 	markCompleted() {
-		let { id, markCompleted } = this.props;
+		let {id, markCompleted} = this.props;
 		markCompleted(id);
 	}
-	
+
 	render() {
 		let {id, completed, text} = this.props;
 		return (
 			<li className={`todo-item ${completed ? 'todo-completed' : 'todo-notcomplete'} list-unstyled`}>
-				<TodoTextCont text={text} id={id} markCompleted={this.markCompleted}/>
+				<TodoTextCont text={text} id={id} markCompleted={this.markCompleted} />
 			</li>
 		);
 	}
