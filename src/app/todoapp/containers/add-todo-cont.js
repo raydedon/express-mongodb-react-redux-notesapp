@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import {incCounter, createTodo, onAddTodoTextChange} from "../actions/add-todo";
-import AddTodo from "../components/add-todo";
+import {connect} from 'react-redux';
+import {incCounter, createTodo, onAddTodoTextChange} from '../actions/add-todo';
+import AddTodo from '../components/add-todo';
 
 const mapStateToProps = state => ({
 	addTodoText: state.addTodoText

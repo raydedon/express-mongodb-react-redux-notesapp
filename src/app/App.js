@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.scss';
-import TodoListApp from "./todoapp/todo-list-app";
+import TodoListApp from './todoapp/todo-list-app';
 import logo from '../images/logo.svg';
+import {HashRouter} from 'react-router-dom';
 
 class App extends Component {
 	render() {
@@ -14,10 +15,16 @@ class App extends Component {
 				<p className="App-intro">
 					To get started, edit <code>src/App.js</code> and save to reload.
 				</p>
-				<TodoListApp/>
+				<TodoListApp />
 			</div>
 		);
 	}
 }
 
-export default App;
+const Root = () => (
+	<HashRouter>
+		<App />
+	</HashRouter>
+);
+
+export default Root;
