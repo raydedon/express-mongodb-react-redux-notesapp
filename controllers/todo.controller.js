@@ -2,8 +2,7 @@ const Todo = require('../models/todo.model');
 
 exports.create = (req, res) => {
 	// Create a Todo
-	let {text = 'Untitled Todo', completed} = req.body;
-	console.info(`${text} ${completed}`);
+	let {text = 'Untitled Todo', completed = false} = req.body;
 	const todo = new Todo({text, completed});
 
 	// Save Todo in the database

@@ -14,7 +14,7 @@ export const onEditTodoText = (id, text) => ({
 	text
 });
 
-export const onCancelEditTodoText = (id) => ({
+export const onCancelEditTodoText = () => ({
 	type: CANCEL_EDIT_TODO_TEXT
 });
 

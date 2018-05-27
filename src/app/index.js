@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './App';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import rootReducer from './todoapp/reducers';
 import '../stylesheets/style.scss';
+import configureStore from './store/configureStore.thunk';
+import {fetchTodos} from './todoapp/actions/add-todo';
 
-const store = createStore(rootReducer, {list: [{id: 1, text: 'jai shri ram', completed: false}]});
+const store = configureStore();
+store.dispatch(fetchTodos());
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Root />
