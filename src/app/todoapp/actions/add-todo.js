@@ -13,7 +13,7 @@ export const FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE';
 export function createTodo(text) {
 	return dispatch => {
 		dispatch(createTodoRequest());
-		
+
 		return fetch(`${ROOT_URL}/todos`, {
 			body: JSON.stringify({text, completed: true}),
 			method: POST_REQUEST,
@@ -56,7 +56,7 @@ export const onAddTodoTextChange = text => ({
 export function fetchTodos() {
 	return dispatch => {
 		dispatch(fetchTodosRequest());
-		
+
 		return fetch(`${ROOT_URL}/todos`)
 			.then(
 				r => r.json(),
