@@ -1,6 +1,6 @@
 import {TODO_MARK_COMPLETED_SUCCESS} from '../actions';
 import {ADD_TODO, CREATE_TODO_SUCCESS, FETCH_TODOS_SUCCESS} from '../actions/add-todo';
-import {SAVE_TODO_TEXT} from '../actions/todo-item';
+import {DELETE_TODO_SUCCESS, SAVE_TODO_TEXT} from '../actions/todo-item';
 
 const list = (state = [], action) => {
 	let {type, text = '', id, list = [], completed = false} = action;
@@ -19,6 +19,8 @@ const list = (state = [], action) => {
 			});
 		case FETCH_TODOS_SUCCESS:
 			return list;
+		case DELETE_TODO_SUCCESS:
+			return state.filter(i => i.id !== id);
 		default:
 			return state;
 	}
