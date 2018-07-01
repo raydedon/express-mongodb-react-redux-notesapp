@@ -6,5 +6,7 @@ router.post('/', todos.create);
 
 router.get('/', todos.findAll);
 
+router.put('/:todoId', todos.update);
+
 module.exports = router;
 

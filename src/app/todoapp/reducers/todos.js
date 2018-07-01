@@ -1,4 +1,4 @@
-import {TODO_MARK_COMPLETED} from '../actions';
+import {TODO_MARK_COMPLETED_SUCCESS} from '../actions';
 import {ADD_TODO, CREATE_TODO_SUCCESS, FETCH_TODOS_SUCCESS} from '../actions/add-todo';
 import {SAVE_TODO_TEXT} from '../actions/todo-item';
 
@@ -9,7 +9,7 @@ const list = (state = [], action) => {
 			return [...state, {text, completed, id}];
 		case ADD_TODO:
 			return [...state, {text, completed, id}];
-		case TODO_MARK_COMPLETED:
+		case TODO_MARK_COMPLETED_SUCCESS:
 			return state.map(i => {
 				return i.id === id ? {...i, completed: !i.completed} : i;
 			});
