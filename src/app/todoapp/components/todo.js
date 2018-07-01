@@ -11,8 +11,8 @@ class Todo extends Component {
 	}
 
 	markCompleted() {
-		let {id, markCompleted} = this.props;
-		markCompleted(id);
+		let {id, completed, markCompleted} = this.props;
+		markCompleted(id, !completed);
 	}
 
 	render() {

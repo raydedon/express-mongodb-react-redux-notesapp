@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	markCompleted: id => dispatch(markCompleted(id))
+	markCompleted: (id, completed) => dispatch(markCompleted(id, completed))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

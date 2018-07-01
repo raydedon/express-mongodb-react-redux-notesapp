@@ -13,6 +13,10 @@ const cleanOptions = {
 module.exports = {
 	context: path.resolve(__dirname, 'public'),
 	devtool: 'cheap-module-eval-source-map',
+	resolve: {
+		// Add '.ts' and '.tsx' as resolvable extensions.
+		extensions: [".ts", ".tsx", ".js", ".json"]
+	},
 	entry: {
 		main: '../src/app/index.js'
 	},
