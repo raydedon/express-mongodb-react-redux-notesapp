@@ -27,7 +27,7 @@ exports.findAll = (req, res) => {
 		});
 };
 
-// Update a note identified by the noteId in the request
+// Update a todo identified by the todoId in the request
 exports.update = (req, res) => {
 	// Validate Request
 	let {text = null, completed = null} = req.body;
@@ -44,7 +44,7 @@ exports.update = (req, res) => {
 	if(completed !== null) {
 		todo.completed = completed;
 	}
-	// Find note and update it with the request body
+	// Find todo and update it with the request body
 	Todo.findByIdAndUpdate(
 		req.params.todoId,
 		{$set: todo},
@@ -53,7 +53,7 @@ exports.update = (req, res) => {
 		.then(todo => {
 			if(!todo) {
 				return res.status(404).send({
-					message: `Todo not found with id ${req.params.noteId}`
+					message: `Todo not found with id ${req.params.todoId}`
 				});
 			}
 			res.send(todo);
@@ -69,3 +69,26 @@ exports.update = (req, res) => {
 			});
 		});
 };
+
+// Delete a todo with the specified todoId in the request
+exports.delete = (req, res) => {
+	Todo.findByIdAndRemove(req.params.todoId)
+		.then(todo => {
+			if(!todo) {
+				return res.status(404).send({
+					message: `Todo not found with id ${req.params.todoId}`
+				});
+			}
+			res.send({message: 'Todo deleted successfully!'});
+		}).catch(err => {
+		if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+			return res.status(404).send({
+				message: `Todo not found with id ${req.params.todoId}`
+			});
+		}
+		return res.status(500).send({
+			message: `Could not delete todo with id ${req.params.todoId}`
+		});
+	});
+};
+

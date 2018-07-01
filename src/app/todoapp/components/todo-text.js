@@ -10,6 +10,7 @@ class TodoText extends Component {
 		this.onEditTodoTextChange = this.onEditTodoTextChange.bind(this);
 		this.markCompleted = this.markCompleted.bind(this);
 		this.cancelEditTodo = this.cancelEditTodo.bind(this);
+		this.onDeleteTodo = this.onDeleteTodo.bind(this);
 	}
 
 	editTodo(e) {
@@ -40,6 +41,12 @@ class TodoText extends Component {
 		markCompleted(id);
 	}
 
+	onDeleteTodo(e) {
+		e.stopPropagation();
+		let {id, onDeleteTodo} = this.props;
+		onDeleteTodo(id);
+	}
+
 	render() {
 		let {text, editTodoText, editActive} = this.props;
 		return (
@@ -49,6 +56,9 @@ class TodoText extends Component {
 					<span className="todo-text h5">{text}</span>
 					<a onClick={this.editTodo} className="todo-text-edit">
 						<i className="fa fa-2x fa-pencil" />
+					</a>
+					<a onClick={this.onDeleteTodo} className="todo-text-edit">
+						<i className="fa fa-2x fa-times-circle" />
 					</a>
 				</div>
 				<div className="edit-todo">
