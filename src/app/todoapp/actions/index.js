@@ -15,7 +15,7 @@ export const setVisibilityFilter = filter => ({
 export const markCompleted = (id, completed) => {
 	return dispatch => {
 		dispatch(markCompletedRequest());
-		
+
 		return fetch(`${ROOT_URL}/todos/${id}`, {
 			body: JSON.stringify({completed}),
 			method: PUT_REQUEST,
