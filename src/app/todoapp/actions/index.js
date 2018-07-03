@@ -1,5 +1,4 @@
-import {POST_REQUEST, PUT_REQUEST, ROOT_URL} from '../../utility';
-import {createTodoFailure, createTodoSuccess, fetchTodosFailure} from './add-todo';
+import {PUT_REQUEST, ROOT_URL} from '../../utility';
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const TODO_MARK_COMPLETED_REQUEST = 'TODO_MARK_COMPLETED_REQUEST';

@@ -1,4 +1,4 @@
-import {DELETE_REQUEST, PUT_REQUEST, ROOT_URL} from '../../utility';
+import {DELETE_REQUEST, ROOT_URL} from '../../utility';
 
 export const EDIT_TODO_INPUT_TEXT_CHANGE = 'EDIT_TODO_INPUT_TEXT_CHANGE';
 export const EDIT_TODO_TEXT = 'EDIT_TODO_TEXT';
@@ -47,25 +47,31 @@ export const deleteTodo = (id) => {
 					console.log('An error occurred.', error);
 					dispatch(deleteTodoFailure(id));
 				})
-			.then(r => dispatch(deleteTodoSuccess(id)))
+			.then(() => dispatch(deleteTodoSuccess(id)))
 			.catch(error => {
 				console.log('An error occurred.', error);
-				dispatch(markCompletedFailure());
+				dispatch(deleteTodoFailure());
 			});
 	};
 };
 
 export const deleteTodoRequest = (id) => ({
 	type: DELETE_TODO_REQUEST,
-	id
+	payload: {
+		id
+	}
 });
 
 export const deleteTodoSuccess = (id) => ({
 	type: DELETE_TODO_SUCCESS,
-	id
+	payload: {
+		id
+	}
 });
 
 export const deleteTodoFailure = (id) => ({
 	type: DELETE_TODO_FAILURE,
-	id
+	payload: {
+		id
+	}
 });
