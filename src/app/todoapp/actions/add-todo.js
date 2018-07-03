@@ -15,7 +15,7 @@ export function createTodo(text) {
 		dispatch(createTodoRequest());
 
 		return fetch(`${ROOT_URL}/todos`, {
-			body: JSON.stringify({text, completed: true}),
+			body: JSON.stringify({text}),
 			method: POST_REQUEST,
 			headers: {
 				'Content-Type': 'application/json'
@@ -38,9 +38,11 @@ export const createTodoRequest = () => ({
 export const createTodoSuccess = ({_id, text, completed}) => {
 	return {
 		type: CREATE_TODO_SUCCESS,
-		id: _id,
-		text,
-		completed
+		payload: {
+			id: _id,
+			text,
+			completed
+		}
 	};
 };
 
@@ -50,7 +52,9 @@ export const createTodoFailure = () => ({
 
 export const onAddTodoTextChange = text => ({
 	type: ADD_TODO_INPUT_TEXT_CHANGE,
-	text
+	payload: {
+		text
+	}
 });
 
 export function fetchTodos() {
@@ -75,7 +79,9 @@ export const fetchTodosRequest = () => ({
 export const fetchTodosSuccess = (list) => {
 	return {
 		type: FETCH_TODOS_SUCCESS,
-		list
+		payload: {
+			list
+		}
 	};
 };
 

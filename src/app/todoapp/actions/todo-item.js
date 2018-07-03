@@ -10,13 +10,17 @@ export const DELETE_TODO_FAILURE = 'DELETE_TODO_FAILURE';
 
 export const onEditTodoTextChange = text => ({
 	type: EDIT_TODO_INPUT_TEXT_CHANGE,
-	text
+	payload: {
+		text
+	}
 });
 
 export const onEditTodoText = (id, text) => ({
 	type: EDIT_TODO_TEXT,
-	id,
-	text
+	payload: {
+		id,
+		text
+	}
 });
 
 export const onCancelEditTodoText = () => ({
@@ -25,8 +29,10 @@ export const onCancelEditTodoText = () => ({
 
 export const onSaveTodoText = (id, text) => ({
 	type: SAVE_TODO_TEXT,
-	id,
-	text
+	payload: {
+		id,
+		text
+	}
 });
 
 export const deleteTodo = (id) => {

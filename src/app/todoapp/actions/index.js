@@ -9,7 +9,9 @@ export const TODO_MARK_COMPLETED_FAILURE = 'TODO_MARK_COMPLETED_FAILURE';
 
 export const setVisibilityFilter = filter => ({
 	type: SET_VISIBILITY_FILTER,
-	filter
+	payload: {
+		filter
+	}
 });
 
 export const markCompleted = (id, completed) => {
@@ -44,7 +46,8 @@ const markCompletedRequest = () => ({
 });
 
 const markCompletedSuccess = (todo) => ({
-	type: TODO_MARK_COMPLETED_SUCCESS, ...todo
+	type: TODO_MARK_COMPLETED_SUCCESS,
+	payload: {...todo}
 });
 
 const markCompletedFailure = () => ({

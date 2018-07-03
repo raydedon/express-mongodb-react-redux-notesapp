@@ -3,7 +3,8 @@ import {ADD_TODO, CREATE_TODO_SUCCESS, FETCH_TODOS_SUCCESS} from '../actions/add
 import {DELETE_TODO_SUCCESS, SAVE_TODO_TEXT} from '../actions/todo-item';
 
 const list = (state = [], action) => {
-	let {type, text = '', id, list = [], completed = false} = action;
+	let {type, payload = {}} = action;
+	let {text = '', id, list = [], completed = false} = payload;
 	switch(type) {
 		case CREATE_TODO_SUCCESS:
 			return [...state, {text, completed, id}];

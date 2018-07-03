@@ -14,7 +14,7 @@ class AddTodo extends Component {
 		onAddTodoTextChange(e.currentTarget.value);
 	}
 
-	createAddTodoItem(e) {
+	createAddTodoItem() {
 		let {createAddTodoItem, addTodoText, onAddTodoTextChange} = this.props;
 		if(isEmpty(addTodoText)) return;
 		createAddTodoItem(addTodoText);
