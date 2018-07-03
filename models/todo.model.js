@@ -7,7 +7,7 @@ const todoSchema = mongoose.Schema({
 	timestamps: true
 });
 
-todoSchema.virtual('id').get(function () {
+todoSchema.virtual('id').get(function() {
 	return this._id.toHexString();
 });
 
