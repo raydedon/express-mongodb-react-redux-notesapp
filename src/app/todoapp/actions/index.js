@@ -1,5 +1,4 @@
-import {POST_REQUEST, PUT_REQUEST, ROOT_URL} from '../../utility';
-import {createTodoFailure, createTodoSuccess, fetchTodosFailure} from './add-todo';
+import {PUT_REQUEST, ROOT_URL} from '../../utility';
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const TODO_MARK_COMPLETED_REQUEST = 'TODO_MARK_COMPLETED_REQUEST';
@@ -9,7 +8,9 @@ export const TODO_MARK_COMPLETED_FAILURE = 'TODO_MARK_COMPLETED_FAILURE';
 
 export const setVisibilityFilter = filter => ({
 	type: SET_VISIBILITY_FILTER,
-	filter
+	payload: {
+		filter
+	}
 });
 
 export const markCompleted = (id, completed) => {
@@ -44,7 +45,8 @@ const markCompletedRequest = () => ({
 });
 
 const markCompletedSuccess = (todo) => ({
-	type: TODO_MARK_COMPLETED_SUCCESS, ...todo
+	type: TODO_MARK_COMPLETED_SUCCESS,
+	payload: {...todo}
 });
 
 const markCompletedFailure = () => ({

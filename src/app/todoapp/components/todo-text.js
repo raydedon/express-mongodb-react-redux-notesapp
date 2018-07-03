@@ -55,10 +55,10 @@ class TodoText extends Component {
 					 onClick={this.markCompleted}>
 					<span className="todo-text h5">{text}</span>
 					<a onClick={this.editTodo} className="todo-text-edit">
-						<i className="fa fa-2x fa-pencil" />
+						<i className="fa fa-pencil" />
 					</a>
 					<a onClick={this.onDeleteTodo} className="todo-text-edit">
-						<i className="fa fa-2x fa-times-circle" />
+						<i className="fa fa-times-circle" />
 					</a>
 				</div>
 				<div className="edit-todo">
@@ -67,10 +67,10 @@ class TodoText extends Component {
 					       onChange={this.onEditTodoTextChange}
 					       className="todo-input form-control" />
 					<a onClick={this.saveTodo} className="todo-text-save">
-						<i className="fa fa-2x fa-check" />
+						<i className="fa fa-check" />
 					</a>
 					<a onClick={this.cancelEditTodo} className="todo-text-save">
-						<i className="fa fa-2x fa-times" />
+						<i className="fa fa-times" />
 					</a>
 				</div>
 			</div>
