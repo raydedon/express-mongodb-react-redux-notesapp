@@ -1,4 +1,4 @@
-import {TODO_MARK_COMPLETED_SUCCESS} from '../actions';
+import {TODO_MARK_COMPLETED_SUCCESS} from '../actions/index';
 import {ADD_TODO, CREATE_TODO_SUCCESS, FETCH_TODOS_SUCCESS} from '../actions/add-todo';
 import {DELETE_TODO_SUCCESS, SAVE_TODO_TEXT} from '../actions/todo-item';
 

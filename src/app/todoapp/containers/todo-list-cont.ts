@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {markCompleted, VisibilityFilters} from '../actions';
+import {markCompleted, VisibilityFilters} from '../actions/index';
 import TodoList from '../components/todo-list';
 
 const getVisibleTodos = (list, filter = VisibilityFilters.SHOW_ALL) => {

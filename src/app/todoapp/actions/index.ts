@@ -1,20 +1,34 @@
 import {PUT_REQUEST, ROOT_URL} from '../../utility';
-
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-export const TODO_MARK_COMPLETED_REQUEST = 'TODO_MARK_COMPLETED_REQUEST';
-export const TODO_MARK_COMPLETED_SUCCESS = 'TODO_MARK_COMPLETED_SUCCESS';
-export const TODO_MARK_COMPLETED_FAILURE = 'TODO_MARK_COMPLETED_FAILURE';
+import {ITodo, ISetVisibilityFilter, IFilter} from "./model";
+import ActionTypeKeys from "./action-type-keys";
 
 
-export const setVisibilityFilter = filter => ({
-	type: SET_VISIBILITY_FILTER,
+
+/*
+function setVisibilityFilter(filterType: string): ISetVisibilityFilter {
+	return {
+		type: ActionTypeKeys.SET_VISIBILITY_FILTER,
+		payload: {
+			filterType
+		}
+	}
+}
+*/
+
+export const setVisibilityFilter: (filterType: string) => ISetVisibilityFilter = filterType => ({
+	type: ActionTypeKeys.SET_VISIBILITY_FILTER,
 	payload: {
-		filter
+		filterType
 	}
 });
 
+/*
 export const markCompleted = (id, completed) => {
 	return dispatch => {
+		
+		
+		
+		
 		dispatch(markCompletedRequest());
 
 		return fetch(`${ROOT_URL}/todos/${id}`, {
@@ -58,3 +72,4 @@ export const VisibilityFilters = {
 	SHOW_COMPLETED: 'SHOW_COMPLETED',
 	SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
+*/

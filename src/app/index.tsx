@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import Root from './App';
 import {Provider} from 'react-redux';
 import '../stylesheets/style.scss';
@@ -11,6 +11,6 @@ store.dispatch(fetchTodos());
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Root />
+		<Root/>
 	</Provider>,
 	document.getElementById('root'));

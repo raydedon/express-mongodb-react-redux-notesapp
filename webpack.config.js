@@ -18,7 +18,7 @@ module.exports = {
 		extensions: [".ts", ".tsx", ".js", ".json"]
 	},
 	entry: {
-		main: '../src/app/index.js'
+		main: '../src/app/index.tsx'
 	},
 	output: {
 		filename: '[name].bundle.js',
