@@ -1,27 +1,28 @@
-import {TODO_MARK_COMPLETED_SUCCESS} from '../actions/index';
-import {ADD_TODO, CREATE_TODO_SUCCESS, FETCH_TODOS_SUCCESS} from '../actions/add-todo';
-import {DELETE_TODO_SUCCESS, SAVE_TODO_TEXT} from '../actions/todo-item';
+import {
+	ActionTypeKeys,
+	IEditTodo,
+	ITodo,
+	ITodoId, ITodosList,
+	TodosListActionTypes
+} from "../../index";
 
-const list = (state = [], action) => {
-	let {type, payload = {}} = action;
-	let {text = '', id, list = [], completed = false} = payload;
+const list : (state: Array<ITodo>, action: TodosListActionTypes) => Array<ITodo> = (state = [], action) => {
+	let {type, payload} = action;
 	switch(type) {
-		case CREATE_TODO_SUCCESS:
-			return [...state, {text, completed, id}];
-		case ADD_TODO:
-			return [...state, {text, completed, id}];
-		case TODO_MARK_COMPLETED_SUCCESS:
+		case ActionTypeKeys.CREATE_TODO_SUCCESS:
+			return [...state, {...payload as ITodo}];
+		case ActionTypeKeys.TODO_MARK_COMPLETED_SUCCESS:
 			return state.map(i => {
-				return i.id === id ? {...i, completed: !i.completed} : i;
+				return i.id === (payload as ITodo).id ? {...i, completed: !i.completed} : i;
 			});
-		case SAVE_TODO_TEXT:
+		case ActionTypeKeys.SAVE_TODO_TEXT:
 			return state.map(i => {
-				return i.id === id ? {...i, text} : i;
+				return i.id === (payload as IEditTodo).id ? {...i, text: (payload as IEditTodo).text} : i;
 			});
-		case FETCH_TODOS_SUCCESS:
-			return list;
-		case DELETE_TODO_SUCCESS:
-			return state.filter(i => i.id !== id);
+		case ActionTypeKeys.FETCH_TODOS_SUCCESS:
+			return (payload as ITodosList).list;
+		case ActionTypeKeys.DELETE_TODO_SUCCESS:
+			return state.filter(i => i.id !== (payload as ITodoId).id);
 		default:
 			return state;
 	}

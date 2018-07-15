@@ -1,10 +1,9 @@
-import {ADD_TODO_INPUT_TEXT_CHANGE} from '../actions/add-todo';
+import {ActionTypeKeys, IAddTodoTextChangeAction} from "../../index";
 
-const addTodoText = (state = '', action) => {
-	let {type, payload = {}} = action;
-	let {text} = payload;
+const addTodoText: (state: string, action: IAddTodoTextChangeAction) => string = (state = '', action) => {
+	let {type, payload: {text}} = action;
 	switch(type) {
-		case ADD_TODO_INPUT_TEXT_CHANGE:
+		case ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE:
 			return text;
 		default:
 			return state;

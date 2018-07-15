@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import './todo.scss';
+import '../../../stylesheets/todo.scss';
 import TodoTextCont from '../containers/todo-text-cont';
 
 class Todo extends Component {

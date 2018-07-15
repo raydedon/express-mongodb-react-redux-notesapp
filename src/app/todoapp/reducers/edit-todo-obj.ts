@@ -1,16 +1,18 @@
-import {EDIT_TODO_INPUT_TEXT_CHANGE, EDIT_TODO_TEXT, CANCEL_EDIT_TODO_TEXT, SAVE_TODO_TEXT} from '../actions/todo-item';
+import {ActionTypeKeys, EditTodoActionTypes, IEditTodo} from "../../index";
 
-const editTodoObj = (state = '', action) => {
-	let {type, payload = {}} = action;
-	let {id, text} = payload;
+const editTodoObj: (state: IEditTodo, action: EditTodoActionTypes) => IEditTodo = (state, action) => {
+	let {type, payload: {id, text}} = action;
 	switch(type) {
-		case EDIT_TODO_INPUT_TEXT_CHANGE:
+		//todo
+/*
+		case ActionTypeKeys.EDIT_TODO_INPUT_TEXT_CHANGE:
 			return {...state, text};
-		case EDIT_TODO_TEXT:
+*/
+		case ActionTypeKeys.EDIT_TODO_TEXT:
 			return {id, text};
-		case CANCEL_EDIT_TODO_TEXT:
+		case ActionTypeKeys.CANCEL_EDIT_TODO_TEXT:
 			return {};
-		case SAVE_TODO_TEXT:
+		case ActionTypeKeys.SAVE_TODO_TEXT:
 			return {};
 		default:
 			return state;

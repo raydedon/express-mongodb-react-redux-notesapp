@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import './todo-text.scss';
+import * as React from 'react';
+import '../../../stylesheets/todo-text.scss';
 
 class TodoText extends Component {
 	constructor(props) {

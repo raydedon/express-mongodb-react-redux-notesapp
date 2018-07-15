@@ -1,41 +1,44 @@
 import {DELETE_REQUEST, ROOT_URL} from '../../utility';
+import {
+	ActionTypeKeys,
+	ICancelEditTodoTextAction,
+	IDeleteTodoFailureAction,
+	IDeleteTodoRequestAction,
+	IDeleteTodoSuccessAction,
+	IEditTodoTextAction,
+	IEditTodoTextChangeAction,
+	ISaveTodoTextAction
+} from "../../index";
 
-export const EDIT_TODO_INPUT_TEXT_CHANGE = 'EDIT_TODO_INPUT_TEXT_CHANGE';
-export const EDIT_TODO_TEXT = 'EDIT_TODO_TEXT';
-export const CANCEL_EDIT_TODO_TEXT = 'CANCEL_EDIT_TODO_TEXT';
-export const SAVE_TODO_TEXT = 'SAVE_TODO_TEXT';
-export const DELETE_TODO_REQUEST = 'DELETE_TODO_REQUEST';
-export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS';
-export const DELETE_TODO_FAILURE = 'DELETE_TODO_FAILURE';
-
-export const onEditTodoTextChange = text => ({
-	type: EDIT_TODO_INPUT_TEXT_CHANGE,
+export const onEditTodoTextChange: (text: string) => IEditTodoTextChangeAction = text => ({
+	type: ActionTypeKeys.EDIT_TODO_INPUT_TEXT_CHANGE,
 	payload: {
 		text
 	}
 });
 
-export const onEditTodoText = (id, text) => ({
-	type: EDIT_TODO_TEXT,
-	payload: {
-		id,
-		text
-	}
-});
-
-export const onCancelEditTodoText = () => ({
-	type: CANCEL_EDIT_TODO_TEXT
-});
-
-export const onSaveTodoText = (id, text) => ({
-	type: SAVE_TODO_TEXT,
+export const onEditTodoText: (id: string, text: string) => IEditTodoTextAction = (id, text) => ({
+	type: ActionTypeKeys.EDIT_TODO_TEXT,
 	payload: {
 		id,
 		text
 	}
 });
 
-export const deleteTodo = (id) => {
+export const onCancelEditTodoText: () => ICancelEditTodoTextAction = () => ({
+	type: ActionTypeKeys.CANCEL_EDIT_TODO_TEXT,
+	payload: {}
+});
+
+export const onSaveTodoText: (id: string, text: string) => ISaveTodoTextAction = (id, text) => ({
+	type: ActionTypeKeys.SAVE_TODO_TEXT,
+	payload: {
+		id,
+		text
+	}
+});
+
+export const deleteTodo: (id: string) => (dispatch: any) => Promise<void> = (id) => {
 	return dispatch => {
 		dispatch(deleteTodoRequest(id));
 		return fetch(`${ROOT_URL}/todos/${id}`, {
@@ -50,27 +53,27 @@ export const deleteTodo = (id) => {
 			.then(() => dispatch(deleteTodoSuccess(id)))
 			.catch(error => {
 				console.log('An error occurred.', error);
-				dispatch(deleteTodoFailure());
+				dispatch(deleteTodoFailure(id));
 			});
 	};
 };
 
-export const deleteTodoRequest = (id) => ({
-	type: DELETE_TODO_REQUEST,
+export const deleteTodoRequest: (id: string) => IDeleteTodoRequestAction = (id) => ({
+	type: ActionTypeKeys.DELETE_TODO_REQUEST,
 	payload: {
 		id
 	}
 });
 
-export const deleteTodoSuccess = (id) => ({
-	type: DELETE_TODO_SUCCESS,
+export const deleteTodoSuccess: (id: string) => IDeleteTodoSuccessAction = (id) => ({
+	type: ActionTypeKeys.DELETE_TODO_SUCCESS,
 	payload: {
 		id
 	}
 });
 
-export const deleteTodoFailure = (id) => ({
-	type: DELETE_TODO_FAILURE,
+export const deleteTodoFailure: (id: string) => IDeleteTodoFailureAction = (id) => ({
+	type: ActionTypeKeys.DELETE_TODO_FAILURE,
 	payload: {
 		id
 	}

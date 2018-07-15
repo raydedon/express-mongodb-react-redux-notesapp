@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.scss';
+import '../stylesheets/App.scss';
 import TodoListApp from './todoapp/todo-list-app';
 import logo from '../images/logo.svg';
 import {HashRouter} from 'react-router-dom';

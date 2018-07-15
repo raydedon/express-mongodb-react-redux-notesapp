@@ -1,6 +1,12 @@
 import {PUT_REQUEST, ROOT_URL} from '../../utility';
-import {ITodo, ISetVisibilityFilter, IFilter} from "./model";
-import ActionTypeKeys from "./action-type-keys";
+import {
+	ActionTypeKeys,
+	IMarkCompletedFailureAction,
+	IMarkCompletedRequestAction,
+	IMarkCompletedSuccessAction,
+	ISetVisibilityFilterAction,
+	ITodo
+} from "../../index";
 
 
 
@@ -15,19 +21,15 @@ function setVisibilityFilter(filterType: string): ISetVisibilityFilter {
 }
 */
 
-export const setVisibilityFilter: (filterType: string) => ISetVisibilityFilter = filterType => ({
+export const setVisibilityFilter: (filterType: string) => ISetVisibilityFilterAction = filterType => ({
 	type: ActionTypeKeys.SET_VISIBILITY_FILTER,
 	payload: {
 		filterType
 	}
 });
 
-/*
-export const markCompleted = (id, completed) => {
+export const markCompleted: (id: string, completed: boolean) => (dispatch: any) => Promise<void> = (id, completed) => {
 	return dispatch => {
-		
-		
-		
 		
 		dispatch(markCompletedRequest());
 
@@ -54,22 +56,23 @@ export const markCompleted = (id, completed) => {
 	};
 };
 
-const markCompletedRequest = () => ({
-	type: TODO_MARK_COMPLETED_REQUEST
+const markCompletedRequest: () => IMarkCompletedRequestAction = () => ({
+	type: ActionTypeKeys.TODO_MARK_COMPLETED_REQUEST
 });
 
-const markCompletedSuccess = (todo) => ({
-	type: TODO_MARK_COMPLETED_SUCCESS,
+const markCompletedSuccess: (todo: ITodo) => IMarkCompletedSuccessAction = (todo) => ({
+	type: ActionTypeKeys.TODO_MARK_COMPLETED_SUCCESS,
 	payload: {...todo}
 });
 
-const markCompletedFailure = () => ({
-	type: TODO_MARK_COMPLETED_FAILURE
+const markCompletedFailure: () => IMarkCompletedFailureAction = () => ({
+	type: ActionTypeKeys.TODO_MARK_COMPLETED_FAILURE
 });
 
-export const VisibilityFilters = {
-	SHOW_ALL: 'SHOW_ALL',
-	SHOW_COMPLETED: 'SHOW_COMPLETED',
-	SHOW_ACTIVE: 'SHOW_ACTIVE'
-};
-*/
+
+export enum VisibilityFilters {
+	SHOW_ALL = 'SHOW_ALL',
+	SHOW_COMPLETED = 'SHOW_COMPLETED',
+	SHOW_ACTIVE = 'SHOW_ACTIVE'
+}
+

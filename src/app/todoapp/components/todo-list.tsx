@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import Todo from './todo';
 import PropTypes from 'prop-types';
 

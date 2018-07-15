@@ -1,17 +1,18 @@
 import {POST_REQUEST, ROOT_URL} from '../../utility';
+import {
+	ActionTypeKeys,
+	IAddTodoTextChangeAction,
+	ICreateTodoFailureAction,
+	ICreateTodoRequestAction,
+	ICreateTodoSuccessAction,
+	IFetchTodosFailureAction,
+	IFetchTodosRequestAction,
+	IFetchTodosSuccessAction,
+	ITodo
+} from "../../index";
 
-export const ADD_TODO = 'ADD_TODO';
-export const CREATE_TODO_REQUEST = 'CREATE_TODO_REQUEST';
-export const CREATE_TODO_SUCCESS = 'CREATE_TODO_SUCCESS';
-export const CREATE_TODO_FAILURE = 'CREATE_TODO_FAILURE';
-export const ADD_TODO_INPUT_TEXT_CHANGE = 'ADD_TODO_INPUT_TEXT_CHANGE';
-export const FETCH_TODOS_REQUEST = 'FETCH_TODOS_REQUEST';
-export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
-export const FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE';
-
-
-export function createTodo(text) {
-	return dispatch => {
+export const createTodo: (text: string) => (dispatch: any) => Promise<void> = (text: string) => {
+	return (dispatch: any) => {
 		dispatch(createTodoRequest());
 
 		return fetch(`${ROOT_URL}/todos`, {
@@ -31,13 +32,13 @@ export function createTodo(text) {
 	};
 }
 
-export const createTodoRequest = () => ({
-	type: CREATE_TODO_REQUEST
+export const createTodoRequest: () => ICreateTodoRequestAction = () => ({
+	type: ActionTypeKeys.CREATE_TODO_REQUEST
 });
 
-export const createTodoSuccess = ({_id, text, completed}) => {
+export const createTodoSuccess: (arg: ITodo) => ICreateTodoSuccessAction = ({_id, text, completed}) => {
 	return {
-		type: CREATE_TODO_SUCCESS,
+		type: ActionTypeKeys.CREATE_TODO_SUCCESS,
 		payload: {
 			id: _id,
 			text,
@@ -46,19 +47,19 @@ export const createTodoSuccess = ({_id, text, completed}) => {
 	};
 };
 
-export const createTodoFailure = () => ({
-	type: CREATE_TODO_FAILURE
+export const createTodoFailure: () => ICreateTodoFailureAction = () => ({
+	type: ActionTypeKeys.CREATE_TODO_FAILURE
 });
 
-export const onAddTodoTextChange = text => ({
-	type: ADD_TODO_INPUT_TEXT_CHANGE,
+export const onAddTodoTextChange: (text: string) => IAddTodoTextChangeAction = text => ({
+	type: ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE,
 	payload: {
 		text
 	}
 });
 
-export function fetchTodos() {
-	return dispatch => {
+export const fetchTodos: () => (dispatch: any) => Promise<void> = () => {
+	return (dispatch) => {
 		dispatch(fetchTodosRequest());
 
 		return fetch(`${ROOT_URL}/todos`)
@@ -72,19 +73,19 @@ export function fetchTodos() {
 	};
 }
 
-export const fetchTodosRequest = () => ({
-	type: FETCH_TODOS_REQUEST
+export const fetchTodosRequest: () => IFetchTodosRequestAction = () => ({
+	type: ActionTypeKeys.FETCH_TODOS_REQUEST
 });
 
-export const fetchTodosSuccess = (list) => {
+export const fetchTodosSuccess: (list: ITodo[]) => IFetchTodosSuccessAction = (list) => {
 	return {
-		type: FETCH_TODOS_SUCCESS,
+		type: ActionTypeKeys.FETCH_TODOS_SUCCESS,
 		payload: {
 			list
 		}
 	};
 };
 
-export const fetchTodosFailure = () => ({
-	type: FETCH_TODOS_FAILURE
+export const fetchTodosFailure: () => IFetchTodosFailureAction = () => ({
+	type: ActionTypeKeys.FETCH_TODOS_FAILURE
 });
