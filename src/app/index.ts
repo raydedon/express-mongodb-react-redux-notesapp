@@ -23,56 +23,19 @@ export interface ITodosList {
 	list: Array<ITodo>;
 }
 
-export interface IStoreState {
-	readonly addTodoText: string;
-	list: Array<ITodo>;
-	editTodoObj: IEditTodo;
-}
+export type addTodoTextReducerType = string | undefined;
+export type listReducerType = ITodo[] | undefined;
+export type editTodoObjReducerType = IEditTodo | undefined;
 
-export interface IReduxAction {
-	readonly type: string;
-	payload?: ITodoText | ITodoId | ITodoCompleted | IEditTodo | ITodo;
+export interface IStoreState {
+	addTodoText: addTodoTextReducerType;
+	editTodoObj: editTodoObjReducerType;
+	list: listReducerType;
 }
 
 export interface IFilter {
 	readonly filterType: string;
 }
-
-export interface IGenericPayload {
-	text?: string;
-	id?: string;
-	list?: Array<ITodo>;
-	completed?: boolean;
-}
-
-export type ActionTypes = IFetchTodosRequestAction |
-	IFetchTodosSuccessAction |
-	IFetchTodosFailureAction |
-	ICreateTodoRequestAction |
-	ICreateTodoSuccessAction |
-	ICreateTodoFailureAction |
-	IAddTodoTextChangeAction |
-	IMarkCompletedRequestAction |
-	IMarkCompletedSuccessAction |
-	IMarkCompletedFailureAction |
-	ISetVisibilityFilterAction |
-	IEditTodoTextChangeAction |
-	IEditTodoTextAction |
-	ICancelEditTodoTextAction |
-	ISaveTodoTextAction |
-	IDeleteTodoRequestAction |
-	IDeleteTodoSuccessAction |
-	IDeleteTodoFailureAction;
-	
-export type TodosListActionTypes = ICreateTodoSuccessAction |
-	IMarkCompletedSuccessAction |
-	ISaveTodoTextAction |
-	IFetchTodosSuccessAction |
-	IDeleteTodoSuccessAction;
-
-export type EditTodoActionTypes = IEditTodoTextAction |
-	ICancelEditTodoTextAction |
-	ISaveTodoTextAction;
 
 export enum ActionTypeKeys {
 	SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER',
@@ -111,7 +74,7 @@ export interface ICreateTodoSuccessAction extends Action<ActionTypeKeys.CREATE_T
 
 export type ICreateTodoFailureAction = Action<ActionTypeKeys.CREATE_TODO_FAILURE>
 
-export interface IAddTodoTextChangeAction extends Action<ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE> {
+export interface IAddTodoTextChangeAction extends Action<any> {
 	readonly payload: ITodoText;
 }
 

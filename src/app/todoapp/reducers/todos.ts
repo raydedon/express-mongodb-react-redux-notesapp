@@ -1,11 +1,13 @@
 import {
 	ActionTypeKeys,
 	ITodo,
-	ITodoId, ITodosList,
-	TodosListActionTypes
+	ITodoId,
+	ITodosList,
+	listReducerType,
 } from "../../index";
+import {AnyAction} from "redux";
 
-const list : (state: Array<ITodo>, action: TodosListActionTypes) => Array<ITodo> = (state = [], action) => {
+const list : (state: listReducerType, action: AnyAction) => ITodo[] = (state = [], action) => {
 	let {type, payload} = action;
 	switch(type) {
 		case ActionTypeKeys.CREATE_TODO_SUCCESS:
