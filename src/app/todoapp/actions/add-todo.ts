@@ -28,7 +28,7 @@ export const createTodo: (text: string) => (dispatch: any) => Promise<void> = (t
 					console.log('An error occurred.', error);
 					dispatch(createTodoFailure());
 				})
-			.then(r => dispatch(createTodoSuccess(r)));
+			.then(r => dispatch(createTodoSuccess(Object.assign({}, r, {id: r._id}))));
 	};
 }
 
@@ -36,14 +36,10 @@ export const createTodoRequest: () => ICreateTodoRequestAction = () => ({
 	type: ActionTypeKeys.CREATE_TODO_REQUEST
 });
 
-export const createTodoSuccess: (arg: ITodo) => ICreateTodoSuccessAction = ({_id, text, completed}) => {
+export const createTodoSuccess: (arg: ITodo) => ICreateTodoSuccessAction = ({id, text, completed}) => {
 	return {
 		type: ActionTypeKeys.CREATE_TODO_SUCCESS,
-		payload: {
-			id: _id,
-			text,
-			completed
-		}
+		payload: {id, text, completed}
 	};
 };
 

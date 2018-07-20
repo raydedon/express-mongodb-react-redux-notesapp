@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../../../stylesheets/todo.scss';
 import TodoTextCont from '../containers/todo-text-cont';
 
-class Todo extends Component {
+class Todo extends React.Component {
 	constructor(props) {
 		super(props);
 

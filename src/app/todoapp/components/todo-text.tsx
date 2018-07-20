@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../../../stylesheets/todo-text.scss';
 
-class TodoText extends Component {
+class TodoText extends React.Component {
 	constructor(props) {
 		super(props);
 

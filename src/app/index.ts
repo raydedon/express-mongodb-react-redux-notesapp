@@ -58,63 +58,63 @@ export enum ActionTypeKeys {
 	DELETE_TODO_FAILURE = 'DELETE_TODO_FAILURE'
 }
 
-export type IFetchTodosRequestAction = Action<ActionTypeKeys.FETCH_TODOS_REQUEST>
+export type IFetchTodosRequestAction = Action<ActionTypeKeys>
 
-export interface IFetchTodosSuccessAction extends Action<ActionTypeKeys.FETCH_TODOS_SUCCESS> {
+export interface IFetchTodosSuccessAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodosList;
 }
 
-export type IFetchTodosFailureAction = Action<ActionTypeKeys.FETCH_TODOS_FAILURE>
+export type IFetchTodosFailureAction = Action<ActionTypeKeys>
 
-export type ICreateTodoRequestAction = Action<ActionTypeKeys.CREATE_TODO_REQUEST>
+export type ICreateTodoRequestAction = Action<ActionTypeKeys>
 
-export interface ICreateTodoSuccessAction extends Action<ActionTypeKeys.CREATE_TODO_SUCCESS> {
+export interface ICreateTodoSuccessAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodo;
 }
 
-export type ICreateTodoFailureAction = Action<ActionTypeKeys.CREATE_TODO_FAILURE>
+export type ICreateTodoFailureAction = Action<ActionTypeKeys>
 
-export interface IAddTodoTextChangeAction extends Action<any> {
+export interface IAddTodoTextChangeAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodoText;
 }
 
-export type IMarkCompletedRequestAction = Action<ActionTypeKeys.TODO_MARK_COMPLETED_REQUEST>
+export type IMarkCompletedRequestAction = Action<ActionTypeKeys>
 
-export interface IMarkCompletedSuccessAction extends Action<ActionTypeKeys.TODO_MARK_COMPLETED_SUCCESS> {
+export interface IMarkCompletedSuccessAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodo;
 }
 
-export type IMarkCompletedFailureAction = Action<ActionTypeKeys.TODO_MARK_COMPLETED_FAILURE>
+export type IMarkCompletedFailureAction = Action<ActionTypeKeys>
 
 export interface ISetVisibilityFilterAction {
 	readonly type: ActionTypeKeys.SET_VISIBILITY_FILTER;
 	readonly payload: IFilter;
 }
 
-export interface IEditTodoTextChangeAction extends Action<ActionTypeKeys.EDIT_TODO_INPUT_TEXT_CHANGE> {
+export interface IEditTodoTextChangeAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodoText;
 }
 
-export interface IEditTodoTextAction extends Action<ActionTypeKeys.EDIT_TODO_TEXT> {
+export interface IEditTodoTextAction extends Action<ActionTypeKeys> {
 	readonly payload: IEditTodo;
 }
 
-export interface ICancelEditTodoTextAction extends Action<ActionTypeKeys.CANCEL_EDIT_TODO_TEXT> {
+export interface ICancelEditTodoTextAction extends Action<ActionTypeKeys> {
 	readonly payload: IEditTodo;
 }
 
-export interface ISaveTodoTextAction extends Action<ActionTypeKeys.SAVE_TODO_TEXT> {
+export interface ISaveTodoTextAction extends Action<ActionTypeKeys> {
 	readonly payload: IEditTodo;
 }
 
-export interface IDeleteTodoRequestAction extends Action<ActionTypeKeys.DELETE_TODO_REQUEST> {
+export interface IDeleteTodoRequestAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodoId;
 }
 
-export interface IDeleteTodoSuccessAction extends Action<ActionTypeKeys.DELETE_TODO_SUCCESS> {
+export interface IDeleteTodoSuccessAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodoId;
 }
 
-export interface IDeleteTodoFailureAction extends Action<ActionTypeKeys.DELETE_TODO_FAILURE> {
+export interface IDeleteTodoFailureAction extends Action<ActionTypeKeys> {
 	readonly payload: ITodoId;
 }

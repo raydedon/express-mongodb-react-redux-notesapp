@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 
-class AddTodo extends Component {
+class AddTodo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onAddTodoTextChange = this.onAddTodoTextChange.bind(this);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Todo from './todo';
 import PropTypes from 'prop-types';
 
-class TodoList extends Component {
+class TodoList extends React.Component {
 	constructor(props) {
 		super(props);
 
