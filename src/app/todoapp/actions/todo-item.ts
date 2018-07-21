@@ -1,4 +1,3 @@
-import {DELETE_REQUEST, ROOT_URL} from '../../utility';
 import {
 	ActionTypeKeys,
 	ICancelEditTodoTextAction,
@@ -9,6 +8,7 @@ import {
 	IEditTodoTextChangeAction,
 	ISaveTodoTextAction
 } from "../../index";
+import {DELETE_REQUEST, ROOT_URL} from '../../utility';
 
 export const onEditTodoTextChange: (text: string) => IEditTodoTextChangeAction = text => ({
 	type: ActionTypeKeys.EDIT_TODO_INPUT_TEXT_CHANGE,

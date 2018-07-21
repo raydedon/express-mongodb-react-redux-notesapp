@@ -1,8 +1,8 @@
 import {AnyAction, combineReducers} from 'redux';
-import addTodoText from './add-todo-text';
-import list from './todos';
-import editTodoObj from './edit-todo-obj';
 import {IStoreState} from "../../index";
+import addTodoText from './add-todo-text';
+import editTodoObj from './edit-todo-obj';
+import list from './todos';
 
 const rootReducer= combineReducers<IStoreState, AnyAction>({
 	addTodoText,

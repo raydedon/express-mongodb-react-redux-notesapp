@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {markCompleted, VisibilityFilters} from '../actions/index';
 import TodoList from '../components/todo-list';
 
-const getVisibleTodos: (list: Array<any>, filter: VisibilityFilters) => Array<any> = (list, filter = VisibilityFilters.SHOW_ALL) => {
+const getVisibleTodos: (list: any[], filter: VisibilityFilters) => any[] = (list, filter = VisibilityFilters.SHOW_ALL) => {
 	switch(filter) {
 		case VisibilityFilters.SHOW_COMPLETED: {
 			return list.filter(t => t.completed);

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import FilterLink from './filterlink';
 import {VisibilityFilters} from '../actions/index';
+import FilterLink from './filterlink';
 
-const Footer = () => {
+const Footer: React.SFC<{}> = () => {
 	return (
 		<ul className="nav">
 			<li className="nav-item">

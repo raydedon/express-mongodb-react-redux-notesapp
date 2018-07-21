@@ -1,11 +1,11 @@
 import * as React from 'react';
+import {HashRouter} from 'react-router-dom';
+import logo from '../images/logo.svg';
 import '../stylesheets/App.scss';
 import TodoListApp from './todoapp/todo-list-app';
-import logo from '../images/logo.svg';
-import {HashRouter} from 'react-router-dom';
 
 class App extends React.Component {
-	render() {
+	public render() {
 		return (
 			<div className="App">
 				<header className="App-header">

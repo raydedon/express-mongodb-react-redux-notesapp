@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import TodoText from '../components/todo-text';
 import {
-	onEditTodoText, onCancelEditTodoText, onEditTodoTextChange, onSaveTodoText,
-	deleteTodo
+	deleteTodo, onCancelEditTodoText, onEditTodoText, onEditTodoTextChange,
+	onSaveTodoText
 } from '../actions/todo-item';
+import TodoText from '../components/todo-text';
 
 const mapStateToProps = (state, ownProps) => ({
 	id: ownProps.id,

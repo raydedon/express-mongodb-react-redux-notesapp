@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Root from './App';
 import {Provider} from 'react-redux';
 import '../stylesheets/style.scss';
+import Root from './App';
 import configureStore from './store/configureStore.thunk';
 import {fetchTodos} from './todoapp/actions/add-todo';
 

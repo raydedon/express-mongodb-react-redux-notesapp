@@ -1,16 +1,12 @@
 import * as React from 'react';
+import {ITodoMarkCompleted, ITodosList} from "../../index";
 import Todo from './todo';
-import PropTypes from 'prop-types';
 
-class TodoList extends React.Component {
-	constructor(props) {
-		super(props);
+interface ITodoListProps extends ITodosList, ITodoMarkCompleted {}
 
-		this.renderListItems = this.renderListItems.bind(this);
-	}
-
-	renderListItems() {
-		let {list, markCompleted} = this.props;
+class TodoList extends React.Component<ITodoListProps, {}> {
+	public renderListItems(this: TodoList) {
+		const {list, markCompleted} = this.props;
 		return list.map((todo) => (
 			<Todo completed={todo.completed}
 			      markCompleted={markCompleted}
@@ -20,19 +16,10 @@ class TodoList extends React.Component {
 		));
 	}
 
-	render() {
+	public render() {
 		return <ul>{this.renderListItems()}</ul>;
 	}
 }
-
-TodoList.proptypes = {
-	markCompleted: PropTypes.func.isRequired,
-	list: PropTypes.bool.isRequired,
-};
-
-TodoList.defaultProps = {
-	list: [],
-};
 
 export default TodoList;
 

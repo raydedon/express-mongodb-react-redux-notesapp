@@ -13,42 +13,42 @@ class TodoText extends React.Component {
 		this.onDeleteTodo = this.onDeleteTodo.bind(this);
 	}
 
-	editTodo(e) {
+	public editTodo(e) {
 		e.stopPropagation();
-		let {id, text, onEditTodoText} = this.props;
+		const {id, text, onEditTodoText} = this.props;
 		onEditTodoText(id, text);
 	}
 
-	saveTodo(e) {
+	public saveTodo(e) {
 		e.stopPropagation();
-		let {id, editTodoText, onSaveTodoText} = this.props;
+		const {id, editTodoText, onSaveTodoText} = this.props;
 		onSaveTodoText(id, editTodoText);
 	}
 
-	cancelEditTodo(e) {
+	public cancelEditTodo(e) {
 		e.stopPropagation();
-		let {onCancelEditTodoText} = this.props;
+		const {onCancelEditTodoText} = this.props;
 		onCancelEditTodoText();
 	}
 
-	onEditTodoTextChange(e) {
-		let {onEditTodoTextChange} = this.props;
+	public onEditTodoTextChange(e) {
+		const {onEditTodoTextChange} = this.props;
 		onEditTodoTextChange(e.currentTarget.value);
 	}
 
-	markCompleted() {
-		let {id, markCompleted} = this.props;
+	public markCompleted() {
+		const {id, markCompleted} = this.props;
 		markCompleted(id);
 	}
 
-	onDeleteTodo(e) {
+	public onDeleteTodo(e) {
 		e.stopPropagation();
-		let {id, onDeleteTodo} = this.props;
+		const {id, onDeleteTodo} = this.props;
 		onDeleteTodo(id);
 	}
 
-	render() {
-		let {text, editTodoText, editActive} = this.props;
+	public render() {
+		const {text, editTodoText, editActive} = this.props;
 		return (
 			<div className={`todo-text-display ${editActive ? 'edit-active' : ''}`}>
 				<div className="readonly-todo"

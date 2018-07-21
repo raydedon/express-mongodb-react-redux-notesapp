@@ -1,3 +1,4 @@
+import {AnyAction} from "redux";
 import {
 	ActionTypeKeys,
 	ITodo,
@@ -5,14 +6,13 @@ import {
 	ITodosList,
 	listReducerType,
 } from "../../index";
-import {AnyAction} from "redux";
 
 const list : (state: listReducerType, action: AnyAction) => ITodo[] = (state = [], action) => {
-	let {type, payload} = action;
+	const {type, payload} = action;
 	switch(type) {
 		case ActionTypeKeys.CREATE_TODO_SUCCESS:
 			return [...state, {...payload as ITodo}];
-			//todo
+			// todo
 /*
 		case ActionTypeKeys.TODO_MARK_COMPLETED_SUCCESS:
 			return state.map(i => {

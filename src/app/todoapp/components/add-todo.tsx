@@ -1,28 +1,27 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
+import * as _ from "lodash";
+import * as React from "react";
 
-class AddTodo extends React.Component {
-	constructor(props) {
-		super(props);
-		this.onAddTodoTextChange = this.onAddTodoTextChange.bind(this);
-		this.createAddTodoItem = this.createAddTodoItem.bind(this);
+interface IAddTodoProps {
+	createAddTodoItem: (text: string) => void;
+	addTodoText: string;
+	onAddTodoTextChange: (text: string) => void;
+}
+
+class AddTodo extends React.Component<IAddTodoProps, {}> {
+	public onAddTodoTextChange(this: AddTodo, event: React.ChangeEvent<HTMLInputElement>): void {
+		const {onAddTodoTextChange} = this.props;
+		onAddTodoTextChange(event.currentTarget.value);
 	}
 
-	onAddTodoTextChange(e) {
-		let {onAddTodoTextChange} = this.props;
-		onAddTodoTextChange(e.currentTarget.value);
-	}
-
-	createAddTodoItem() {
-		let {createAddTodoItem, addTodoText, onAddTodoTextChange} = this.props;
-		if(isEmpty(addTodoText)) return;
+	public createAddTodoItem(this: AddTodo) {
+		const {createAddTodoItem, addTodoText, onAddTodoTextChange} = this.props;
+		if (_.isEmpty(addTodoText)) { return; }
 		createAddTodoItem(addTodoText);
-		onAddTodoTextChange('');
+		onAddTodoTextChange("");
 	}
 
-	render() {
-		let {addTodoText} = this.props;
+	public render() {
+		const {addTodoText} = this.props;
 		return (
 			<form>
 				<div className="input-group mb-3">
@@ -35,7 +34,7 @@ class AddTodo extends React.Component {
 						<button className="btn btn-outline-secondary"
 						        type="button"
 						        onClick={this.createAddTodoItem}>
-							<i className="fa fa-plus"></i>
+							<i className="fa fa-plus"/>
 						</button>
 					</div>
 				</div>
@@ -44,10 +43,5 @@ class AddTodo extends React.Component {
 	}
 }
 
-AddTodo.proptypes = {
-	createAddTodoItem: PropTypes.func.isRequired,
-};
-
 export default AddTodo;
-
 

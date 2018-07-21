@@ -1,9 +1,9 @@
 import * as React from 'react';
-import AddTodoCont from './containers/add-todo-cont';
-import TodoListCont from './containers/todo-list-cont';
-import Footer from './components/footer';
 import {Route} from 'react-router-dom';
 import {VisibilityFilters} from './actions/index';
+import Footer from './components/footer';
+import AddTodoCont from './containers/add-todo-cont';
+import TodoListCont from './containers/todo-list-cont';
 
 const TodoListApp: React.SFC<{}> = () => {
 	return (

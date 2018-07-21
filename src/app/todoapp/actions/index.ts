@@ -1,4 +1,3 @@
-import {PUT_REQUEST, ROOT_URL} from '../../utility';
 import {
 	ActionTypeKeys,
 	IMarkCompletedFailureAction,
@@ -7,6 +6,7 @@ import {
 	ISetVisibilityFilterAction,
 	ITodo
 } from "../../index";
+import {PUT_REQUEST, ROOT_URL} from '../../utility';
 
 
 

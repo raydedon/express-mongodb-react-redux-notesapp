@@ -1,4 +1,3 @@
-import {POST_REQUEST, ROOT_URL} from '../../utility';
 import {
 	ActionTypeKeys,
 	IAddTodoTextChangeAction,
@@ -10,6 +9,7 @@ import {
 	IFetchTodosSuccessAction,
 	ITodo
 } from "../../index";
+import {POST_REQUEST, ROOT_URL} from '../../utility';
 
 export const createTodo: (text: string) => (dispatch: any) => Promise<void> = (text: string) => {
 	return (dispatch: any) => {

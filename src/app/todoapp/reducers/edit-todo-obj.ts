@@ -1,10 +1,10 @@
-import {ActionTypeKeys, editTodoObjReducerType, IEditTodo} from "../../index";
 import {AnyAction} from "redux";
+import {ActionTypeKeys, editTodoObjReducerType, IEditTodo} from "../../index";
 
 const editTodoObj: (state: editTodoObjReducerType, action: AnyAction) => IEditTodo = (state = {}, action) => {
-	let {type, payload: {id, text}} = action;
+	const {type, payload: {id, text}} = action;
 	switch(type) {
-		//todo
+		// todo
 /*
 		case ActionTypeKeys.EDIT_TODO_INPUT_TEXT_CHANGE:
 			return {...state, text};

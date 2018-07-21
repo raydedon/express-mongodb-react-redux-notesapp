@@ -11,6 +11,8 @@
     "mongo": "mongo --host 127.0.0.1:27017"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.112",
+    "@types/prop-types": "^15.5.3",
     "bootstrap": "^4.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -23,7 +25,9 @@
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.0.1",
     "redux-thunk": "^2.2.0",
-    "tslint": "^5.11.0"
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
+    "tslint-react": "^3.6.0"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
