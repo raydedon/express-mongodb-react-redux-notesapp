@@ -1,17 +1,6 @@
 import * as React from 'react';
 import '../../../stylesheets/todo-text.scss';
-import {ITodoId, ITodoText} from "../../index";
-
-interface ITodoTextProps extends ITodoId, ITodoText {
-	editActive: boolean;
-	editTodoText: string;
-	markCompleted: (id: string, text: string) => void;
-	onCancelEditTodoText: () => void;
-	onDeleteTodo: (id: string) => void;
-	onEditTodoText: (id: string, text: string) => void;
-	onEditTodoTextChange: (text: string) => void;
-	onSaveTodoText: (id: string, text: string) => void;
-}
+import {ITodoTextProps} from "../containers/todo-text-cont";
 
 const TodoText: React.SFC<ITodoTextProps> = (props) => {
 	const editTodo = (event: React.MouseEvent<HTMLAnchorElement>) => {

@@ -28,7 +28,7 @@ const mapStateToProps = (state: IStoreState, ownProps: ITodoListContProps) => ({
 	list: getVisibleTodos((state.list as ITodo[]), ownProps.filter)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
 	markCompleted: (id: string, completed: boolean) => dispatch(markCompleted(id, completed))
 });
 
