@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../stylesheets/todo.scss';
+import * as S from '../../../stylesheets/todo.scss';
 import {ITodo} from "../../index";
 import TodoTextCont from '../containers/todo-text-cont';
 

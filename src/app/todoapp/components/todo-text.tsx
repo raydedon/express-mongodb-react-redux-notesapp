@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../stylesheets/todo-text.scss';
+import * as S from '../../../stylesheets/todo-text.scss';
 import {ITodoTextProps} from "../containers/todo-text-cont";
 
 const TodoText: React.SFC<ITodoTextProps> = (props) => {

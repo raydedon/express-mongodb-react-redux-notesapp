@@ -8,6 +8,7 @@ const cleanOptions = {
 	verbose: true,
 	dry: false
 };
+const paths = require('./config/paths');
 
 
 module.exports = {
@@ -66,7 +67,20 @@ module.exports = {
 						}
 					}
 				]
-			}
+			},
+			{
+				test: /\.(ts|tsx)$/,
+				include: paths.appSrc,
+				use: [
+					{
+						loader: require.resolve('ts-loader'),
+						options: {
+							// disable type checker - we will use it in fork plugin
+							transpileOnly: true,
+						},
+					},
+				],
+			},
 		]
 	},
 	plugins: [
