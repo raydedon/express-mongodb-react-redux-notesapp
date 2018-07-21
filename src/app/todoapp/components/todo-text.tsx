@@ -11,64 +11,61 @@ interface ITodoTextProps extends ITodoId, ITodoText {
 	onEditTodoText: (id: string, text: string) => void;
 	onEditTodoTextChange: (text: string) => void;
 	onSaveTodoText: (id: string, text: string) => void;
-	
 }
 
-class TodoText extends React.Component<ITodoTextProps, {}> {
-	public editTodo(event: React.MouseEvent<HTMLAnchorElement>) {
+const TodoText: React.SFC<ITodoTextProps> = (props) => {
+	const editTodo = (event: React.MouseEvent<HTMLAnchorElement>) => {
 		event.stopPropagation();
-		const {id, text, onEditTodoText} = this.props;
+		const {id, text, onEditTodoText} = props;
 		onEditTodoText(id, text);
 	}
-
-	public saveTodo(event: React.MouseEvent<HTMLAnchorElement>) {
+	
+	const saveTodo = (event: React.MouseEvent<HTMLAnchorElement>) => {
 		event.stopPropagation();
-		const {id, editTodoText, onSaveTodoText} = this.props;
+		const {id, editTodoText, onSaveTodoText} = props;
 		onSaveTodoText(id, editTodoText);
 	}
-
-	public cancelEditTodo(event: React.MouseEvent<HTMLAnchorElement>) {
+	
+	const cancelEditTodo = (event: React.MouseEvent<HTMLAnchorElement>) => {
 		event.stopPropagation();
-		const {onCancelEditTodoText} = this.props;
+		const {onCancelEditTodoText} = props;
 		onCancelEditTodoText();
 	}
-
-	public onEditTodoTextChange(event: React.ChangeEvent<HTMLInputElement>) {
-		const {onEditTodoTextChange} = this.props;
+	
+	const onEditTodoTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const {onEditTodoTextChange} = props;
 		onEditTodoTextChange(event.currentTarget.value);
 	}
-
-	public markCompleted() {
-		const {id, markCompleted} = this.props;
+	
+	const markCompleted = () => {
+		const {id, markCompleted} = props;
 		markCompleted(id, '');
 	}
-
-	public onDeleteTodo(event: React.MouseEvent<HTMLAnchorElement>) {
+	
+	const onDeleteTodo = (event: React.MouseEvent<HTMLAnchorElement>) => {
 		event.stopPropagation();
-		const {id, onDeleteTodo} = this.props;
+		const {id, onDeleteTodo} = props;
 		onDeleteTodo(id);
 	}
-
-	public render() {
-		const {text, editTodoText, editActive} = this.props;
-		return (
-			<div className={`todo-text-display ${editActive ? 'edit-active' : ''}`}>
-				<div className="readonly-todo" onClick={this.markCompleted}>
-					<span className="todo-text h5">{text}</span>
-					<a onClick={this.editTodo} className="todo-text-edit"><i className="fa fa-pencil" /></a>
-					<a onClick={this.onDeleteTodo} className="todo-text-edit"><i className="fa fa-times-circle" /></a>
-				</div>
-				<div className="edit-todo">
-					<input type="text"
-					       value={editTodoText}
-					       onChange={this.onEditTodoTextChange}
-					       className="todo-input form-control" />
-					<a onClick={this.saveTodo} className="todo-text-save"><i className="fa fa-check" /></a>
-					<a onClick={this.cancelEditTodo} className="todo-text-save"><i className="fa fa-times" /></a>
-				</div>
+	
+	const {text, editTodoText, editActive} = props;
+	return (
+		<div className={`todo-text-display ${editActive ? 'edit-active' : ''}`}>
+			<div className="readonly-todo" onClick={markCompleted}>
+				<span className="todo-text h5">{text}</span>
+				<a onClick={editTodo} className="todo-text-edit"><i className="fa fa-pencil" /></a>
+				<a onClick={onDeleteTodo} className="todo-text-edit"><i className="fa fa-times-circle" /></a>
 			</div>
-		);
-	}
+			<div className="edit-todo">
+				<input type="text"
+				       value={editTodoText}
+				       onChange={onEditTodoTextChange}
+				       className="todo-input form-control" />
+				<a onClick={saveTodo} className="todo-text-save"><i className="fa fa-check" /></a>
+				<a onClick={cancelEditTodo} className="todo-text-save"><i className="fa fa-times" /></a>
+			</div>
+		</div>
+	);
 }
 
 export default TodoText;

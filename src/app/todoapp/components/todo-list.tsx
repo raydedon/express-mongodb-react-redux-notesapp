@@ -3,12 +3,12 @@ import {ITodosList} from "../../index";
 import Todo from './todo';
 
 interface ITodoListProps extends ITodosList {
-	markCompleted: (id: string, completed: boolean) => (dispatch: any) => Promise<void>;
+	markCompleted: (id: string, completed: boolean) => void;
 }
 
-class TodoList extends React.Component<ITodoListProps, {}> {
-	public renderListItems(this: TodoList) {
-		const {list, markCompleted} = this.props;
+const TodoList: React.SFC<ITodoListProps> = (props) => {
+	const renderListItems = () => {
+		const {list, markCompleted} = props;
 		return list.map((todo) => (
 			<Todo completed={todo.completed}
 			      markCompleted={markCompleted}
@@ -17,11 +17,9 @@ class TodoList extends React.Component<ITodoListProps, {}> {
 			      id={todo.id} />
 		));
 	}
-
-	public render() {
-		return <ul>{this.renderListItems()}</ul>;
-	}
+	return <ul>{renderListItems()}</ul>;
 }
+
 
 export default TodoList;
 

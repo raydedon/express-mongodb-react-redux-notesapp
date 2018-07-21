@@ -1,24 +1,24 @@
 import * as React from 'react';
 import '../../../stylesheets/todo.scss';
-import {ITodo, ITodoMarkCompleted} from "../../index";
+import {ITodo} from "../../index";
 import TodoTextCont from '../containers/todo-text-cont';
 
-interface ITodoProps extends ITodo, ITodoMarkCompleted {}
+interface ITodoProps extends ITodo {
+	markCompleted: (id: string, completed: boolean) => void;
+}
 
-class Todo extends React.Component<ITodoProps, {}> {
-	public markCompleted() {
-		const {id, completed, markCompleted} = this.props;
+const Todo: React.SFC<ITodoProps> = (props) => {
+	const markCompleted = () => {
+		const {id, completed, markCompleted} = props;
 		markCompleted(id, !completed);
 	}
 
-	public render() {
-		const {id, completed, text} = this.props;
-		return (
-			<li className={`todo-item ${completed ? 'todo-completed' : 'todo-notcomplete'} list-unstyled`}>
-				<TodoTextCont text={text} id={id} markCompleted={this.markCompleted} />
-			</li>
-		);
-	}
+	const {id, completed, text} = props;
+	return (
+		<li className={`todo-item ${completed ? 'todo-completed' : 'todo-notcomplete'} list-unstyled`}>
+			<TodoTextCont text={text} id={id} markCompleted={markCompleted} />
+		</li>
+	);
 }
 
 export default Todo;
