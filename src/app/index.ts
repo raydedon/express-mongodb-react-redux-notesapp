@@ -12,10 +12,6 @@ export interface ITodoCompleted {
 	readonly completed: boolean;
 }
 
-export interface ITodoMarkCompleted {
-	markCompleted: (id: string, completed: boolean) => (dispatch: any) => Promise<void>;
-}
-
 export interface IEditTodo {
 	readonly id?: string;
 	readonly text?: string;

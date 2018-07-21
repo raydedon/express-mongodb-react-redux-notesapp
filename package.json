@@ -8,7 +8,8 @@
     "build": "NODE_ENV=production webpack",
     "build-win": "SET NODE_ENV=production & webpack",
     "mongod": "sudo service mongod start",
-    "mongo": "mongo --host 127.0.0.1:27017"
+    "mongo": "mongo --host 127.0.0.1:27017",
+    "tslint": "tslint --config tslint.json --project tsconfig.json --fix"
   },
   "dependencies": {
     "@types/lodash": "^4.14.112",

@@ -17,17 +17,14 @@ export const createTodo: (text: string) => (dispatch: any) => Promise<void> = (t
 
 		return fetch(`${ROOT_URL}/todos`, {
 			body: JSON.stringify({text}),
-			method: POST_REQUEST,
 			headers: {
 				'Content-Type': 'application/json'
-			}
+			},
+			method: POST_REQUEST,
 		})
 			.then(
 				r => r.json(),
-				error => {
-					console.log('An error occurred.', error);
-					dispatch(createTodoFailure());
-				})
+				error => dispatch(createTodoFailure()))
 			.then(r => dispatch(createTodoSuccess(Object.assign({}, r, {id: r._id}))));
 	};
 }
@@ -38,8 +35,8 @@ export const createTodoRequest: () => ICreateTodoRequestAction = () => ({
 
 export const createTodoSuccess: (arg: ITodo) => ICreateTodoSuccessAction = ({id, text, completed}) => {
 	return {
-		type: ActionTypeKeys.CREATE_TODO_SUCCESS,
-		payload: {id, text, completed}
+		payload: {id, text, completed},
+		type: ActionTypeKeys.CREATE_TODO_SUCCESS
 	};
 };
 
@@ -48,10 +45,10 @@ export const createTodoFailure: () => ICreateTodoFailureAction = () => ({
 });
 
 export const onAddTodoTextChange: (text: string) => IAddTodoTextChangeAction = text => ({
-	type: ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE,
 	payload: {
 		text
-	}
+	},
+	type: ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE
 });
 
 export const fetchTodos: () => (dispatch: any) => Promise<void> = () => {
@@ -61,10 +58,7 @@ export const fetchTodos: () => (dispatch: any) => Promise<void> = () => {
 		return fetch(`${ROOT_URL}/todos`)
 			.then(
 				r => r.json(),
-				error => {
-					console.log('An error occurred.', error);
-					dispatch(fetchTodosFailure());
-				})
+				error => dispatch(fetchTodosFailure()))
 			.then(r => dispatch(fetchTodosSuccess(r)));
 	};
 }
@@ -75,10 +69,10 @@ export const fetchTodosRequest: () => IFetchTodosRequestAction = () => ({
 
 export const fetchTodosSuccess: (list: ITodo[]) => IFetchTodosSuccessAction = (list) => {
 	return {
-		type: ActionTypeKeys.FETCH_TODOS_SUCCESS,
 		payload: {
 			list
-		}
+		},
+		type: ActionTypeKeys.FETCH_TODOS_SUCCESS
 	};
 };
 

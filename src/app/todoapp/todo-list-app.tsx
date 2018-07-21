@@ -6,15 +6,11 @@ import AddTodoCont from './containers/add-todo-cont';
 import TodoListCont from './containers/todo-list-cont';
 
 const TodoListApp: React.SFC<{}> = () => {
+	const routeRender = (props) => <TodoListCont key="TodoListCont" filter={props.match.params.filter || VisibilityFilters.SHOW_ALL} />;
 	return (
 		<React.Fragment>
 			<AddTodoCont key="AddTodoCont" />
-			<Route path="/:filter" render={(props) => {
-				return (
-					<TodoListCont key="TodoListCont" filter={props.match.params.filter || VisibilityFilters.SHOW_ALL} />
-				);
-			}}
-			       key="maincontent" />
+			<Route path="/:filter" render={routeRender} key="maincontent" />
 			<Footer key="footer" />
 		</React.Fragment>
 	);

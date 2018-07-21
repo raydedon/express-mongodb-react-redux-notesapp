@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {ITodoMarkCompleted, ITodosList} from "../../index";
+import {ITodosList} from "../../index";
 import Todo from './todo';
 
-interface ITodoListProps extends ITodosList, ITodoMarkCompleted {}
+interface ITodoListProps extends ITodosList {
+	markCompleted: (id: string, completed: boolean) => (dispatch: any) => Promise<void>;
+}
 
 class TodoList extends React.Component<ITodoListProps, {}> {
 	public renderListItems(this: TodoList) {

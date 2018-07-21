@@ -1,25 +1,33 @@
 import {connect} from 'react-redux';
+import {IEditTodo, IStoreState, ITodoId, ITodoText} from "../../index";
 import {
-	deleteTodo, onCancelEditTodoText, onEditTodoText, onEditTodoTextChange,
+	deleteTodo,
+	onCancelEditTodoText,
+	onEditTodoText,
+	onEditTodoTextChange,
 	onSaveTodoText
 } from '../actions/todo-item';
 import TodoText from '../components/todo-text';
 
-const mapStateToProps = (state, ownProps) => ({
-	id: ownProps.id,
-	editTodoText: state.editTodoObj.text ? state.editTodoObj.text : '',
-	text: ownProps.text,
+interface ITodoTextContProps extends ITodoId, ITodoText {
+	markCompleted: () => void;
+}
+
+const mapStateToProps = (state: IStoreState, ownProps: ITodoTextContProps) => ({
 	editActive: !!(state.editTodoObj && state.editTodoObj.id  && state.editTodoObj.id === ownProps.id),
-	markCompleted: ownProps.markCompleted
+	editTodoText: (state.editTodoObj as IEditTodo).text ? (state.editTodoObj as IEditTodo).text : '',
+	id: ownProps.id,
+	markCompleted: ownProps.markCompleted,
+	text: ownProps.text
 });
 
 
 const mapDispatchToProps = dispatch => ({
-	onEditTodoTextChange: text => dispatch(onEditTodoTextChange(text)),
-	onEditTodoText: (id, text) => dispatch(onEditTodoText(id, text)),
-	onDeleteTodo: id => dispatch(deleteTodo(id)),
 	onCancelEditTodoText: () => dispatch(onCancelEditTodoText()),
-	onSaveTodoText: (id, text) => dispatch(onSaveTodoText(id, text))
+	onDeleteTodo: (id: string) => dispatch(deleteTodo(id)),
+	onEditTodoText: (id: string, text: string) => dispatch(onEditTodoText(id, text)),
+	onEditTodoTextChange: (text: string) => dispatch(onEditTodoTextChange(text)),
+	onSaveTodoText: (id: string, text: string) => dispatch(onSaveTodoText(id, text))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoText);

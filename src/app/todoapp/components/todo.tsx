@@ -6,7 +6,7 @@ import TodoTextCont from '../containers/todo-text-cont';
 interface ITodoProps extends ITodo, ITodoMarkCompleted {}
 
 class Todo extends React.Component<ITodoProps, {}> {
-	public markCompleted(this: Todo) {
+	public markCompleted() {
 		const {id, completed, markCompleted} = this.props;
 		markCompleted(id, !completed);
 	}

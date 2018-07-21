@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {IStoreState, ITodo} from "../../index";
 import {markCompleted, VisibilityFilters} from '../actions/index';
 import TodoList from '../components/todo-list';
 
@@ -19,12 +20,16 @@ const getVisibleTodos: (list: any[], filter: VisibilityFilters) => any[] = (list
 	}
 };
 
-const mapStateToProps = (state, ownProps) => ({
-	list: getVisibleTodos(state.list, ownProps.filter)
+interface ITodoListContProps {
+	filter: VisibilityFilters;
+}
+
+const mapStateToProps = (state: IStoreState, ownProps: ITodoListContProps) => ({
+	list: getVisibleTodos((state.list as ITodo[]), ownProps.filter)
 });
 
 const mapDispatchToProps = dispatch => ({
-	markCompleted: (id, completed) => dispatch(markCompleted(id, completed))
+	markCompleted: (id: string, completed: boolean) => dispatch(markCompleted(id, completed))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
