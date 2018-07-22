@@ -16,7 +16,7 @@ export interface ITodoTextProps extends ITodoId, ITodoText {
 	onCancelEditTodoText: () => void;
 	onDeleteTodo: (id: string) => void;
 	onEditTodoText: (id: string, text: string) => void;
-	onEditTodoTextChange: (text: string) => void;
+	onEditTodoTextChange: (id: string, text: string) => void;
 	onSaveTodoText: (id: string, text: string) => void;
 }
 
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 	onCancelEditTodoText: () => dispatch(onCancelEditTodoText()),
 	onDeleteTodo: (id: string) => dispatch(deleteTodo(id)),
 	onEditTodoText: (id: string, text: string) => dispatch(onEditTodoText(id, text)),
-	onEditTodoTextChange: (text: string) => dispatch(onEditTodoTextChange(text)),
+	onEditTodoTextChange: (id: string, text: string) => dispatch(onEditTodoTextChange(id, text)),
 	onSaveTodoText: (id: string, text: string) => dispatch(onSaveTodoText(id, text))
 });
 

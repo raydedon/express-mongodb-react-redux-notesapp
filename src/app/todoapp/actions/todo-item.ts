@@ -10,8 +10,8 @@ import {
 } from "../../index";
 import {DELETE_REQUEST, ROOT_URL} from '../../utility';
 
-export const onEditTodoTextChange: (text: string) => IEditTodoTextChangeAction = text => ({
-	payload: {text},
+export const onEditTodoTextChange: (id: string, text: string) => IEditTodoTextChangeAction = (id, text) => ({
+	payload: {id, text},
 	type: ActionTypeKeys.EDIT_TODO_INPUT_TEXT_CHANGE
 });
 

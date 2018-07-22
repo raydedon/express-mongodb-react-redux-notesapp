@@ -22,8 +22,8 @@ const TodoText: React.SFC<ITodoTextProps> = (props) => {
 	}
 	
 	const onEditTodoTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const {onEditTodoTextChange} = props;
-		onEditTodoTextChange(event.currentTarget.value);
+		const {id, onEditTodoTextChange} = props;
+		onEditTodoTextChange(id, event.currentTarget.value);
 	}
 	
 	const markCompleted = () => {
