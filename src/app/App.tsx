@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {HashRouter} from 'react-router-dom';
 import logo from '../images/logo.svg';
-import * as S from '../stylesheets/App.scss';
+import './App.scss';
 import TodoListApp from './todoapp/todo-list-app';
 
 class App extends React.Component {

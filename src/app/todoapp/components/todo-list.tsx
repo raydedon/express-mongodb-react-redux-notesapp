@@ -6,9 +6,8 @@ interface ITodoListProps extends ITodosList {
 	markCompleted: (id: string, completed: boolean) => void;
 }
 
-const TodoList: React.SFC<ITodoListProps> = (props) => {
+const TodoList: React.SFC<ITodoListProps> = ({list = [], markCompleted}) => {
 	const renderListItems = () => {
-		const {list, markCompleted} = props;
 		return list.map((todo) => (
 			<Todo completed={todo.completed}
 			      markCompleted={markCompleted}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as S from '../../../stylesheets/todo-text.scss';
 import {ITodoTextProps} from "../containers/todo-text-cont";
+import './todo-text.scss';
 
 const TodoText: React.SFC<ITodoTextProps> = (props) => {
 	const editTodo = (event: React.MouseEvent<HTMLAnchorElement>) => {

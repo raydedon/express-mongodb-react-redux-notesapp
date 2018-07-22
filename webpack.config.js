@@ -16,7 +16,7 @@ module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: [".ts", ".tsx", ".js", ".json"]
+		extensions: [".ts", ".tsx", ".js", ".json", ".scss"]
 	},
 	entry: {
 		main: '../src/app/index.tsx'

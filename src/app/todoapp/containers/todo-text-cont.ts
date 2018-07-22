@@ -21,7 +21,7 @@ export interface ITodoTextProps extends ITodoId, ITodoText {
 }
 
 const mapStateToProps = (state: IStoreState, ownProps: ITodoTextProps) => ({
-	editActive: !(state.editTodoObj && state.editTodoObj.id  && state.editTodoObj.id === ownProps.id),
+	editActive: state.editTodoObj && state.editTodoObj.id  && state.editTodoObj.id === ownProps.id,
 	editTodoText: (state.editTodoObj as IEditTodo).text ? (state.editTodoObj as IEditTodo).text : '',
 	id: ownProps.id,
 	markCompleted: ownProps.markCompleted,
