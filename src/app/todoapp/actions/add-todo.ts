@@ -45,9 +45,7 @@ export const createTodoFailure: () => ICreateTodoFailureAction = () => ({
 });
 
 export const onAddTodoTextChange: (text: string) => IAddTodoTextChangeAction = text => ({
-	payload: {
-		text
-	},
+	payload: {text},
 	type: ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE
 });
 

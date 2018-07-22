@@ -26,7 +26,7 @@ export const onCancelEditTodoText: () => ICancelEditTodoTextAction = () => ({
 });
 
 export const onSaveTodoText: (id: string, text: string) => ISaveTodoTextAction = (id, text) => ({
-	payload: {id, text},
+	payload: {id, text, completed: false},
 	type: ActionTypeKeys.SAVE_TODO_TEXT
 });
 

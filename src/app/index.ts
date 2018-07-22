@@ -24,7 +24,7 @@ export interface ITodosList {
 }
 
 export type addTodoTextReducerType = string | undefined;
-export type listReducerType = ITodo[] | undefined;
+export type listReducerType = ITodo[];
 export type editTodoObjReducerType = IEditTodo | undefined;
 
 export interface IStoreState {
@@ -104,7 +104,7 @@ export interface ICancelEditTodoTextAction extends Action<ActionTypeKeys> {
 }
 
 export interface ISaveTodoTextAction extends Action<ActionTypeKeys> {
-	readonly payload: IEditTodo;
+	readonly payload: ITodo;
 }
 
 export interface IDeleteTodoRequestAction extends Action<ActionTypeKeys> {

@@ -1,8 +1,7 @@
 import {AnyAction} from "redux";
-import {ActionTypeKeys, addTodoTextReducerType} from "../../index";
+import {ActionTypeKeys} from "../../index";
 
-const addTodoText: (state: addTodoTextReducerType, action: AnyAction) => addTodoTextReducerType =
-	(state = '', action) => {
+const addTodoText: (state: string, action: AnyAction) => string = (state = '', action) => {
 	const {type, payload = {}} = action;
 	switch(type) {
 		case ActionTypeKeys.ADD_TODO_INPUT_TEXT_CHANGE:
