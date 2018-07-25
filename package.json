@@ -10,7 +10,7 @@
     "mongod": "sudo service mongod start",
     "mongo": "mongo --host 127.0.0.1:27017",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test --watch"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
