@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './App';
 import {Provider} from 'react-redux';
 import '../stylesheets/style.scss';
-import configureStore from './store/configureStore.thunk';
+import configureStore from './store/configureStore';
 import {fetchTodos} from './todoapp/actions/add-todo';
 
 const store = configureStore();

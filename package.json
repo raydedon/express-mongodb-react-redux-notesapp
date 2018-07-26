@@ -5,10 +5,12 @@
   "scripts": {
     "start": "node ./bin/www",
     "develop": "webpack --mode=development --watch",
-    "build": "NODE_ENV=production webpack",
-    "build-win": "SET NODE_ENV=production & webpack",
+    "build-prod": "NODE_ENV=production webpack",
+    "build-prod-win": "SET NODE_ENV=production && webpack",
+    "build-dev": "webpack",
     "mongod": "sudo service mongod start",
     "mongo": "mongo --host 127.0.0.1:27017",
+    "mongodb-win": "mongod",
     "test": "jest",
     "test:watch": "npm test --watch"
   },
