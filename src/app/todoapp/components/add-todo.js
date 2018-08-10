@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import {connect} from 'react-redux';
+import {createTodo, onAddTodoTextChange} from '../actions/add-todo';
 
+const mapStateToProps = state => ({
+	addTodoText: state.addTodoText
+});
+
+const mapDispatchToProps = dispatch => ({
+	createAddTodoItem: text => dispatch(createTodo(text)),
+	onAddTodoTextChange: text => dispatch(onAddTodoTextChange(text))
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 class AddTodo extends Component {
 	constructor(props) {
 		super(props);
@@ -35,7 +47,7 @@ class AddTodo extends Component {
 						<button className="btn btn-outline-secondary"
 						        type="button"
 						        onClick={this.createAddTodoItem}>
-							<i className="fa fa-plus"></i>
+							<i className="fa fa-plus" />
 						</button>
 					</div>
 				</div>

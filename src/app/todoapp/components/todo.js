@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './todo.scss';
-import TodoTextCont from '../containers/todo-text-cont';
+import TodoTextCont from '../components/todo-text';
 
 class Todo extends Component {
 	constructor(props) {
