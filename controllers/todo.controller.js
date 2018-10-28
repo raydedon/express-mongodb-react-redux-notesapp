@@ -4,7 +4,7 @@ exports.create = (req, res) => {
 	// Create a Todo
 	let {text = 'Untitled Todo', completed = false} = req.body;
 	const todo = new Todo({text, completed});
-
+	
 	// Save Todo in the database
 	todo.save()
 		.then(data => {
@@ -36,7 +36,7 @@ exports.update = (req, res) => {
 			message: 'Todo object can not be empty'
 		});
 	}
-
+	
 	let todo = {};
 	if(text !== null) {
 		todo.text = text;
@@ -45,11 +45,7 @@ exports.update = (req, res) => {
 		todo.completed = completed;
 	}
 	// Find todo and update it with the request body
-	Todo.findByIdAndUpdate(
-		req.params.todoId,
-		{$set: todo},
-		{new: true}
-	)
+	Todo.findByIdAndUpdate(req.params.todoId, {$set: todo}, {new: true})
 		.then(todo => {
 			if(!todo) {
 				return res.status(404).send({
@@ -80,15 +76,16 @@ exports.delete = (req, res) => {
 				});
 			}
 			res.send({message: 'Todo deleted successfully!'});
-		}).catch(err => {
-		if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-			return res.status(404).send({
-				message: `Todo not found with id ${req.params.todoId}`
+		})
+		.catch(err => {
+			if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+				return res.status(404).send({
+					message: `Todo not found with id ${req.params.todoId}`
+				});
+			}
+			return res.status(500).send({
+				message: `Could not delete todo with id ${req.params.todoId}`
 			});
-		}
-		return res.status(500).send({
-			message: `Could not delete todo with id ${req.params.todoId}`
 		});
-	});
 };
 
